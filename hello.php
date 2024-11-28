@@ -3,7 +3,6 @@ session_start(); // Start the session before any output
 
 if(isset($_SESSION['result'])){
   $doctorDetails = $_SESSION['result']; // Retrieve the stored array
-
 }
 
 include("dbconnection.php");
@@ -73,7 +72,7 @@ $con->close();
     <div class="dashboard-container">
         <!-- Sidebar -->
          <!-- Sidebar -->
-    <div class="sidebar">
+         <div class="sidebar">
       <div class="sidebar-logo">
         <img src=" logo.png">
         <h2>WELLBE</h2>
@@ -87,13 +86,13 @@ $con->close();
         </li>
         <li>
         <a href="medicalreports.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-tachometer-alt"></i>
+            <i class="fas fa-notes-medical"></i>
             <span class="menu-text">View Medical Reports</span>
           </a>
         </li>
         <li>
         <a href="labreports.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-tachometer-alt"></i>
+            <i class="fas fa-flask"></i>
             <span class="menu-text">View Lab Reports</span>
           </a>
         </li>
@@ -106,18 +105,18 @@ $con->close();
         </li>
         <li>
         <a href="appointments.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-user-md"></i>
+            <i class="fas fa-calendar-alt"></i>
             <span class="menu-text">Appointments</span>
           </a>
 
         </li>
         <li>
         <a href="chat.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-user-md"></i>
+            <i class="fas fa-comments"></i>
             <span class="menu-text">Chat with Doctor</span>
           </a>
         </li>
-
+        
         <li>
           <i class="fas fa-sign-out-alt"></i><span class="menu-text" onclick="window.location.href='logout.php'">Logout</span>
         </li>
@@ -128,18 +127,19 @@ $con->close();
     <div class="main-content">
       <!-- Top Header -->
       <header class="main-header">
-        <div class="header-left"></div>
+      
+        <div class="header-left"><h1>Appointment Details</h1></div>
         <div class="header-right">
-          <div class="notification">
-            <img src="..\assests\notification.png">
+          <div class="notification-icon">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge"></span>
           </div>
           <div class="user-details">
-            <div class="user-avatar">
-              <!-- User Avatar Icon -->
-            </div>
             <div class="user-info">
-              <p class="name">K.S.Perera</p>
-              <p class="role">Administrative Staff</p>
+              <p class="name"><?= htmlspecialchars($patient['first_name']) ?>
+                <?= htmlspecialchars($patient['last_name']) ?>
+              </p>
+              <p class="role">Patient</p>
             </div>
           </div>
         </div>

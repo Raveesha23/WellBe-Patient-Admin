@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form1 = document.getElementById("patient-form1");
   const form2 = document.getElementById("patient-form2");
-  
 
   const showError = (input, message) => {
     const errorElement = input.nextElementSibling;
@@ -36,7 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const address = document.getElementById("address");
       const email = document.getElementById("email");
       const contact = document.getElementById("contact");
-      const genderSelected = document.querySelector('input[name="gender"]:checked');
+      const genderSelected = document.querySelector(
+        'input[name="gender"]:checked'
+      );
 
       // First Name validation
       if (!firstName.value.trim()) {
@@ -64,23 +65,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // NIC validation
       if (!/^\d{9}[vxVX]$|^\d{12}$/.test(nic.value.trim())) {
-        showError(nic, "NIC must be valid (9 digits followed by 'v/V/x/X' or 12 digits).");
+        showError(
+          nic,
+          "NIC must be valid (9 digits followed by 'v/V/x/X' or 12 digits)."
+        );
         isValid = false;
       } else {
         clearError(nic);
       }
 
       // Date of Birth validation
+      // Date of Birth validation
       if (!dob.value.trim()) {
         showError(dob, "Date of Birth is required.");
         isValid = false;
       } else {
-        clearError(dob);
+        const enteredDate = new Date(dob.value.trim());
+        const currentDate = new Date();
+        const minAllowedDate = new Date();
+        minAllowedDate.setFullYear(currentDate.getFullYear() - 16);
+
+        if (isNaN(enteredDate.getTime()) || enteredDate > minAllowedDate) {
+          showError(dob, "You must be at least 16 years old.");
+          isValid = false;
+        } else {
+          clearError(dob);
+        }
       }
 
       // Gender validation
       if (!genderSelected) {
-        showError(document.querySelector('input[name="gender"]'), "Gender must be selected.");
+        showError(
+          document.querySelector('input[name="gender"]'),
+          "Gender must be selected."
+        );
         isValid = false;
       } else {
         clearError(document.querySelector('input[name="gender"]'));
@@ -118,9 +136,15 @@ document.addEventListener("DOMContentLoaded", () => {
     form2.addEventListener("submit", (e) => {
       let isValid = true;
 
-      const emergencyContactName = document.getElementById("emergency_contact_name");
-      const emergencyContactNo = document.getElementById("emergency_contact_no");
-      const emergencyContactRelationship = document.getElementById("emergency_contact_relationship");
+      const emergencyContactName = document.getElementById(
+        "emergency_contact_name"
+      );
+      const emergencyContactNo = document.getElementById(
+        "emergency_contact_no"
+      );
+      const emergencyContactRelationship = document.getElementById(
+        "emergency_contact_relationship"
+      );
       const allergies = document.getElementById("allergies");
       const medicalConditions = document.getElementById("medical_conditions");
 
@@ -134,7 +158,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Emergency Contact Number validation
       if (!/^\d{10}$/.test(emergencyContactNo.value.trim())) {
-        showError(emergencyContactNo, "Emergency Contact Number must be 10 digits.");
+        showError(
+          emergencyContactNo,
+          "Emergency Contact Number must be 10 digits."
+        );
         isValid = false;
       } else {
         clearError(emergencyContactNo);
@@ -142,7 +169,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Emergency Contact Relationship validation
       if (!emergencyContactRelationship.value.trim()) {
-        showError(emergencyContactRelationship, "Emergency Contact Relationship is required.");
+        showError(
+          emergencyContactRelationship,
+          "Emergency Contact Relationship is required."
+        );
         isValid = false;
       } else {
         clearError(emergencyContactRelationship);
@@ -150,15 +180,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Allergies validation (optional, but sanitize input)
       if (allergies.value.trim() && allergies.value.trim().length > 500) {
-        showError(allergies, "Allergies information must be less than 500 characters.");
+        showError(
+          allergies,
+          "Allergies information must be less than 500 characters."
+        );
         isValid = false;
       } else {
         clearError(allergies);
       }
 
       // Medical Conditions validation (optional, but sanitize input)
-      if (medicalConditions.value.trim() && medicalConditions.value.trim().length > 500) {
-        showError(medicalConditions, "Medical conditions information must be less than 500 characters.");
+      if (
+        medicalConditions.value.trim() &&
+        medicalConditions.value.trim().length > 500
+      ) {
+        showError(
+          medicalConditions,
+          "Medical conditions information must be less than 500 characters."
+        );
         isValid = false;
       } else {
         clearError(medicalConditions);

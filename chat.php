@@ -62,13 +62,13 @@ $con->close();
         </li>
         <li>
         <a href="medicalreports.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-tachometer-alt"></i>
+            <i class="fas fa-notes-medical"></i>
             <span class="menu-text">View Medical Reports</span>
           </a>
         </li>
         <li>
         <a href="labreports.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-tachometer-alt"></i>
+            <i class="fas fa-flask"></i>
             <span class="menu-text">View Lab Reports</span>
           </a>
         </li>
@@ -81,14 +81,14 @@ $con->close();
         </li>
         <li>
         <a href="appointments.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-user-md"></i>
+            <i class="fas fa-calendar-alt"></i>
             <span class="menu-text">Appointments</span>
           </a>
 
         </li>
         <li>
         <a href="chat.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-user-md"></i>
+            <i class="fas fa-comments"></i>
             <span class="menu-text">Chat with Doctor</span>
           </a>
         </li>
@@ -103,7 +103,7 @@ $con->close();
     <div class="main-content">
       <!-- Top Header -->
       <header class="main-header">
-        <div class="header-left"></div>
+        <div class="header-left"><h1>Chat with Doctor</h1></div>
         <div class="header-right">
           <div class="notification-icon">
             <i class="fas fa-bell"></i>

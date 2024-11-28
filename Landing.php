@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_type'])) {
   <header>
     <nav class="section__container nav__container">
       <div class="nav__logo"><img src="./logo.png" />WELL BE</div>
-
+     
       <ul class="nav__links">
         <li class="link"><a href="#home">Home</a></li>
         <li class="link"><a href="#about">About Us</a></li>
@@ -58,6 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_type'])) {
                 form.submit();  // Submit the form
             });
         });
+
+
+        
     </script>
 
       </ul>
@@ -317,7 +320,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_type'])) {
   <footer class="footer">
     <div class="section__container footer__container">
       <div class="footer__col">
-        <div class="footer__logo"><img src="./logo (1).png" /></div>
+        <div class="footer__logo"><img src="./logo.png" /></div>
         <p>
           We are honored to be a part of your healthcare journey and committed
           to delivering compassionate, personalized, and top-notch care every
@@ -347,10 +350,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_type'])) {
       <div class="footer__col">
         <h4>Contact Us</h4>
         <p>
-          <i class="ri-map-pin-2-fill"></i> 123, London Bridge Street, London
+          <i class="ri-map-pin-2-fill"></i> 123, Kandy Street, Kandy
         </p>
-        <p><i class="ri-mail-fill"></i> support@care.com</p>
-        <p><i class="ri-phone-fill"></i> (+012) 3456 789</p>
+        <p><i class="ri-mail-fill"></i> WellBe@Care.com</p>
+        <p><i class="ri-phone-fill"></i> (+94) 3456 789</p>
       </div>
     </div>
     <div class="footer__bar">

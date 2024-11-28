@@ -84,13 +84,13 @@ $con->close();
         </li>
         <li>
         <a href="medicalreports.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-tachometer-alt"></i>
+            <i class="fas fa-notes-medical"></i>
             <span class="menu-text">View Medical Reports</span>
           </a>
         </li>
         <li>
         <a href="labreports.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-tachometer-alt"></i>
+            <i class="fas fa-flask"></i>
             <span class="menu-text">View Lab Reports</span>
           </a>
         </li>
@@ -103,18 +103,18 @@ $con->close();
         </li>
         <li>
         <a href="appointments.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-user-md"></i>
+            <i class="fas fa-calendar-alt"></i>
             <span class="menu-text">Appointments</span>
           </a>
 
         </li>
         <li>
         <a href="chat.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-user-md"></i>
+            <i class="fas fa-comments"></i>
             <span class="menu-text">Chat with Doctor</span>
           </a>
         </li>
-
+        
         <li>
           <i class="fas fa-sign-out-alt"></i><span class="menu-text" onclick="window.location.href='logout.php'">Logout</span>
         </li>
@@ -144,13 +144,13 @@ $con->close();
             <!-- Dashboard Content -->
             <div class="dashboard-content">
                 <div class="welcome-message">
-                    <p>Welcome Mr. K.S.Perera</p>
+                   
                 </div >
                 <div class="container">
                    
                     <div class="search-date">
                         <input type="text" placeholder="Search by Date">
-                        <p>10 August, 2024</p> 
+                       
                     </div>
                     <div class="table-container">
                         <table>

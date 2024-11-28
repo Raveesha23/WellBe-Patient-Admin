@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h1>Log In</h1>
             <form method="post">
                 <div class="loginsignup-fields">
-                    <input name="nic" type="text" placeholder="Type your NIC number" />
+                    <input name="nic" type="text" placeholder="Type your NIC number (Enter p at the end)" />
                     <input name="password" type="password" placeholder="Type your Password" />
                 </div>
 

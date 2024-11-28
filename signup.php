@@ -11,6 +11,7 @@ if (!$con) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['first_name'])) {
     // Save Form 1 data to session
     $_SESSION['form1_data'] = $_POST;
+    $_SESSION['newNIC'] = $_POST['nic'] . "p";
 
     // Redirect to Form 2 to prevent form resubmission
     header("Location: ./form2");
@@ -25,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['medical_history'])) {
 
     // Merge both sets of data
     $patient_data = array_merge($form1_data, $form2_data);
+    $patient_data['nic'] = $_SESSION['newNIC'];
 
     // Prepare the SQL query
     $stmt = $con->prepare("
@@ -39,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['medical_history'])) {
     if (!$stmt) {
         die("Database error: " . $con->error);
     }
+    
     
     // Bind parameters to the statement
     $stmt->bind_param(

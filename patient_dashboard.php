@@ -54,22 +54,21 @@ $con->close();
         <h2>WELLBE</h2>
       </div>
       <ul class="sidebar-menu">
-        <li class="<?= basename($_SERVER['PHP_SELF']) == 'patient_dashboard.php' ? 'active' : '' ?>">
+        <li class="active">
           <a href="patient_dashboard.php?nic=<?= urlencode($nic) ?>">
             <i class="fas fa-tachometer-alt"></i>
             <span class="menu-text">Dashboard</span>
           </a>
         </li>
-
         <li>
-          <a href="medicalreports.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-tachometer-alt"></i>
+        <a href="medicalreports.php?nic=<?= urlencode($nic) ?>">
+            <i class="fas fa-notes-medical"></i>
             <span class="menu-text">View Medical Reports</span>
           </a>
         </li>
         <li>
-          <a href="labreports.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-tachometer-alt"></i>
+        <a href="labreports.php?nic=<?= urlencode($nic) ?>">
+            <i class="fas fa-flask"></i>
             <span class="menu-text">View Lab Reports</span>
           </a>
         </li>
@@ -81,22 +80,21 @@ $con->close();
 
         </li>
         <li>
-          <a href="appointments.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-user-md"></i>
+        <a href="appointments.php?nic=<?= urlencode($nic) ?>">
+            <i class="fas fa-calendar-alt"></i>
             <span class="menu-text">Appointments</span>
           </a>
 
         </li>
         <li>
-          <a href="chat.php?nic=<?= urlencode($nic) ?>">
-            <i class="fas fa-user-md"></i>
+        <a href="chat.php?nic=<?= urlencode($nic) ?>">
+            <i class="fas fa-comments"></i>
             <span class="menu-text">Chat with Doctor</span>
           </a>
         </li>
-
+        
         <li>
-          <i class="fas fa-sign-out-alt"></i><span class="menu-text"
-            onclick="window.location.href='logout.php'">Logout</span>
+          <i class="fas fa-sign-out-alt"></i><span class="menu-text" onclick="window.location.href='logout.php'">Logout</span>
         </li>
       </ul>
     </div>
