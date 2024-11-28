@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrative Staff Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-logo">
+                <img src = "../images/logo.png">
+                <h2>WELLBE</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="../Dashboard/index.html">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span class="menu-text">Dashboard</span>
+                    </a> 
+                </li>
+                <li>
+                    <a href="../Appointments/index.html">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span class="menu-text">Appointments</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Patient/index.html">
+                        <i class="fas fa-user"></i>
+                        <span class="menu-text">Patients</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Doctor/index.html">
+                        <i class="fas fa-user-md"></i>
+                        <span class="menu-text">Doctors</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="../Pharmacists/index.html">
+                        <i class="fas fa-pills"></i>
+                        <span class="menu-text">Pharmacists</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../LabTechs/index.html">
+                        <i class="fas fa-vials"></i>
+                        <span class="menu-text">Lab Technicians</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-list"></i>
+                        <span class="menu-text">Appointment Queue</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-comment-dots"></i>
+                        <span class="menu-text">Chat</span>
+                    </a>
+                </li>
+                <li>
+                    <i class="fas fa-cogs"></i><span class="menu-text">Settings</span>
+                </li>
+                <li>
+                    <i class="fas fa-sign-out-alt"></i><span class="menu-text">Logout</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Header -->
+            <header class="main-header">
+                <div class="header-left">
+                    <h1>Create Pharmacist Profile</h1>
+                </div>
+                <div class="header-right">
+                    <div class="notification">
+                        <img src="../images/notification.png">
+                    </div>
+                    <div class="user-details">
+                        <div class="user-avatar">
+                            <!-- User Avatar Icon -->
+                        </div>
+                        <div class="user-info">
+                            <p class="name">K.S.Perera</p>
+                            <p class="role">Administrative Staff</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!--Content Container-->
+            <div class="content-container">
+                <div class="form-tabs">
+                    <span class="tab active">Pharmacist Details</span>
+                </div>
+                <div class="form-container">
+                    
+                    <form class="patient-form">
+                        <span class="form-title">Professional Information</span>
+                        <div class="form-row">
+                            <label for="medical history">Medical License Number:</label>
+                            <input type="text" id="medical license" name="medical license">
+                        </div>
+                        
+                        <div class="form-row">
+                            <label for="specializtion">Specialization/ Areas of Expertise:</label>
+                            <input type="text" id="specializtion" name="specializtion">
+                        </div>
+                        
+                        <div class="form-row">
+                            <label for="experience">Years of Experience:</label>
+                            <input type="text" id="experience" name="experience">
+                        </div>
+                        
+                        <div class="form-row">
+                            <label for="qualifications">Qualifications and Certifications:</label>
+                            <input type="text" id="qualifications" name="qualifications">
+                        </div>
+
+                        <div class="form-row">
+                            <label for="university">Previous Employment History:</label>
+                            <input type="text" id="university" name="university">
+                        </div>
+                        
+                        <div class="buttons-bar">
+                            <button type="submit" class="prev-button">
+                                <a href="pharmacistForm1.html">Previous</a>
+                            </button>
+                            <button type="submit" class="submit-button">
+                                <a href="index.html">Submit</a>
+                            </button>
+                        </div>
+                        
+                    </form>
+                </div>
+                
+                
+                
+            </div>
+                
+        </div>
+    </div>
+
+</body>
+</html>
