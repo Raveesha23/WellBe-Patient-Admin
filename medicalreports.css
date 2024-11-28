@@ -15,6 +15,11 @@
     height: 100vh;
 }
 
+.header-left h1 {
+    font-size: 24px;
+    color: #172554;
+}
+
 /* Sidebar */
 .sidebar {
     width: 80px; /* Show icons only */
@@ -165,7 +170,7 @@
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     background-color: #fff;
     border-radius: 10px;
     padding: 20px;
@@ -216,6 +221,7 @@ table th {
 
 table td {
     background-color: #fff;
+    cursor: pointer;
 }
 
 .pagination {
@@ -249,22 +255,6 @@ table td {
     color: #666;
 }
 
-/* Dropdown styling inside table */
-.status-dropdown {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #fff;
-    font-size: 14px;
-    color: #444;
-    width: 100%;
-}
-
-.status-dropdown option {
-    font-size: 14px;
-    color: #444;
-}
-
 .sidebar-menu li a {
     text-decoration: none; /* Removes underline */
     color: inherit; /* Inherits color from parent element */
@@ -277,3 +267,22 @@ table td {
   .sidebar-menu li a:focus {
     color: #ddd; /* Change color on hover/focus */
   }
+
+  .notification-icon {
+    position: relative;
+    padding-top: 6px;
+    font-size: 28px;
+    color: #a0a0a0;
+    margin-right: 15px;
+ }
+
+ .notification-badge {
+    position: absolute;
+    top: 3px;
+    right: -4px;
+    width: 14px;
+    height: 14px;
+    background-color: red;
+    border-radius: 50%;
+    border: 2px solid white;
+ }

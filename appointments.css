@@ -12,7 +12,7 @@
 /* Dashboard Container */
 .dashboard-container {
     display: flex;
-    height: 100vh;
+
 }
 
 /* Sidebar */
@@ -21,7 +21,8 @@
     background-color: #172554;
     color: white;
     transition: width 0.3s ease;
-    overflow: hidden;
+    height: 170vh;
+
 }
 
 .sidebar:hover {
@@ -150,103 +151,163 @@
     max-width: 25px;
 }
 
-/* Dashboard Content */
-.dashboard-content {
-    flex-grow: 1;
-    padding: 20px;
-    background-color: white; /* Main content area white background */
-    border-radius: 15px;
-    margin-bottom: 25px;
+
+.header p {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-left: 15px;
 }
 
-.welcome-message p {
-    font-size: 18px;
-    color: #172554;
+
+hr {
+    border: none;
+    border-top: 2px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.btn{
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    margin-top: 5px;
+    background: #172554;
+    margin-left: 100px;
+}
+
+.btn1{
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    margin-top: 5px;
+    background: hwb(226 9% 67% / 0.39);
+    margin-right: 10px;
 }
 
 .container {
-    width: 80%;
-    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to wrap to the next line */
+    gap: 1px; /* Adjust space between the cards */
+    justify-content: start;
+    height: 140vh;
+}
+
+.card {
+    background-color: white;
     border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    margin-left: 20px;
+    height: 400px;
+    margin-top: 5px;
+    width: 30%;
 }
 
-.search-date {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 20px;
-  
+.card h2 {
+    font-size: 24px;
+    color: #333;
+    margin-top: 0px;
 }
 
-.search-date input {
-    width: 200px;
-    padding: 8px;
-    border-radius: 20px;
-    border: 1px solid #d0d0d0;
-    font-size: 14px;
+.card h1 {
+    font-size: 48px;
+    color: #333;
+    margin-top: 5px;
 }
 
-.search-date p{
-    margin-left: 700px;
-    margin-top: 15px;
+.buttons {
+    margin-top: 20px;
 }
 
-.table-container {
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-table th, table td {
-    text-align: left;
-    padding: 12px;
-    border: 1px solid #e0e0e0;
-}
-
-table th {
-    background-color: #eef3ff;
-    color: #444;
-}
-
-table td {
-    background-color: #fff;
-}
-
-.pagination {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.pagination span {
-    font-size: 14px;
-    color: #666;
-}
-
-.pages a {
-    text-decoration: none;
-    margin: 0 5px;
-    padding: 5px 10px;
+button {
+    background-color: #6674cc;
+    border: none;
     border-radius: 5px;
-    color: #444;
-    background-color: #eef3ff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    margin-top: 5px;
 }
 
-.pages a:hover, .pages a:focus {
-    background-color: #1a202c;
+button.accept {
+    background-color: #6674cc;
+}
+
+button.reschedule {
+    background-color: #a3b0ff;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal buttons */
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.yes-btn {
+    background-color: #28a745;
     color: white;
 }
 
-.date {
-    text-align: right;
-    font-size: 14px;
-    color: #666;
+.no-btn {
+    background-color: #dc3545;
+    color: white;
 }
 
 .sidebar-menu li a {
@@ -261,3 +322,26 @@ table td {
   .sidebar-menu li a:focus {
     color: #ddd; /* Change color on hover/focus */
   }
+
+  .doc_name{
+    font-weight: bold;
+  }
+
+  .notification-icon {
+    position: relative;
+    padding-top: 6px;
+    font-size: 28px;
+    color: #a0a0a0;
+    margin-right: 15px;
+ }
+
+ .notification-badge {
+    position: absolute;
+    top: 3px;
+    right: -4px;
+    width: 14px;
+    height: 14px;
+    background-color: red;
+    border-radius: 50%;
+    border: 2px solid white;
+ }

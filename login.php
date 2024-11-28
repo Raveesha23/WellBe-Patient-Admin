@@ -36,11 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     // Redirect based on user type
                     if ($user_type == "patient") {
-                        header("Location: http://localhost/Appointment/patient_dashboard.php?nic=$nic");
+                        header("Location: http://localhost/WellBe-Patient-Admin/patient_dashboard.php?nic=$nic");
                     } elseif ($user_type == "doctor") {
-                        header("Location: http://localhost/Appointment/doctor_dashboard.php?nic=$nic");
+                        header("Location: http://localhost/WellBe-Patient-Admin/doctor_dashboard.php?nic=$nic");
                     }elseif ($user_type == "administrative_staff") {
-                        header("Location: http://localhost/Appointment/Admin/Dashboard/index.html?nic=$nic");
+                        header("Location: http://localhost/WellBe-Patient-Admin/Admin/Dashboard/index.html?nic=$nic");
                     }
                     
                     exit;

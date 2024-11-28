@@ -117,11 +117,9 @@ $con->close();
             <span class="menu-text">Chat with Doctor</span>
           </a>
         </li>
+
         <li>
-          <i class="fas fa-cogs"></i><span class="menu-text">Settings</span>
-        </li>
-        <li>
-          <i class="fas fa-sign-out-alt"></i><span class="menu-text">Logout</span>
+          <i class="fas fa-sign-out-alt"></i><span class="menu-text" onclick="window.location.href='logout.php'">Logout</span>
         </li>
       </ul>
     </div>

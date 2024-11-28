@@ -1,15 +1,38 @@
 <?php
-// Start the session
 session_start();
 
+require 'dbconnection.php';
+
 if (!isset($_GET['nic']) || empty($_GET['nic'])) {
-    die("Access denied: NIC is missing in the URL");
+  die("Invalid access");
 }
 
-$nic = htmlspecialchars($_GET['nic']); // Retrieve and sanitize NIC
+$nic = htmlspecialchars($_GET['nic']);
 
+if (!isset($_GET['nic']) || empty($_GET['nic'])) {
+  die("Invalid NIC provided");
+}
+
+$nic = htmlspecialchars($_GET['nic']); // Sanitize input
+
+// Prepare and execute the query
+$stmt = $con->prepare("SELECT * FROM patient WHERE nic = ?");
+$stmt->bind_param("s", $nic); // Bind NIC as a string
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+  $patient = $result->fetch_assoc(); // Fetch patient data
+} else {
+  die("No patient found with NIC: " . htmlspecialchars($nic));
+}
+
+// Close resources
+$stmt->close();
+$con->close();
 
 ?>
+
 
 
 <!DOCTYPE html>
@@ -17,7 +40,7 @@ $nic = htmlspecialchars($_GET['nic']); // Retrieve and sanitize NIC
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appointment Details</title>
+    
     <link rel="stylesheet" href="./appointments.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -69,11 +92,9 @@ $nic = htmlspecialchars($_GET['nic']); // Retrieve and sanitize NIC
             <span class="menu-text">Chat with Doctor</span>
           </a>
         </li>
+
         <li>
-          <i class="fas fa-cogs"></i><span class="menu-text">Settings</span>
-        </li>
-        <li>
-          <i class="fas fa-sign-out-alt"></i><span class="menu-text">Logout</span>
+          <i class="fas fa-sign-out-alt"></i><span class="menu-text" onclick="window.location.href='logout.php'">Logout</span>
         </li>
       </ul>
     </div>
@@ -82,18 +103,18 @@ $nic = htmlspecialchars($_GET['nic']); // Retrieve and sanitize NIC
     <div class="main-content">
       <!-- Top Header -->
       <header class="main-header">
-        <div class="header-left"></div>
+        <div class="header-left"><h1>Appointment Details</h1></div>
         <div class="header-right">
-          <div class="notification">
-            <img src="..\assests\notification.png">
+          <div class="notification-icon">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge"></span>
           </div>
           <div class="user-details">
-            <div class="user-avatar">
-              <!-- User Avatar Icon -->
-            </div>
             <div class="user-info">
-              <p class="name">K.S.Perera</p>
-              <p class="role">Administrative Staff</p>
+              <p class="name"><?= htmlspecialchars($patient['first_name']) ?>
+                <?= htmlspecialchars($patient['last_name']) ?>
+              </p>
+              <p class="role">Patient</p>
             </div>
           </div>
         </div>
@@ -103,12 +124,12 @@ $nic = htmlspecialchars($_GET['nic']); // Retrieve and sanitize NIC
             <!-- Dashboard Content -->
             <div class="dashboard-content">
                 <div class="header">
-                    <p>Appointments
+                   
                         <button class="btn" onclick="window.location.href='search_for_doctor'">Schedule an Appointment</button>
                         <span>
                             <button class="btn1">Reschedule/ Cancellation Policy</button>
                         </span>
-                    </p>
+                    
                 </div>
                 <hr>  
                 <div class="container">

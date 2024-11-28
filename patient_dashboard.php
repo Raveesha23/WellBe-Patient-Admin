@@ -54,12 +54,13 @@ $con->close();
         <h2>WELLBE</h2>
       </div>
       <ul class="sidebar-menu">
-        <li class="active">
+        <li class="<?= basename($_SERVER['PHP_SELF']) == 'patient_dashboard.php' ? 'active' : '' ?>">
           <a href="patient_dashboard.php?nic=<?= urlencode($nic) ?>">
             <i class="fas fa-tachometer-alt"></i>
             <span class="menu-text">Dashboard</span>
           </a>
         </li>
+
         <li>
           <a href="medicalreports.php?nic=<?= urlencode($nic) ?>">
             <i class="fas fa-tachometer-alt"></i>
@@ -92,11 +93,10 @@ $con->close();
             <span class="menu-text">Chat with Doctor</span>
           </a>
         </li>
+
         <li>
-          <i class="fas fa-cogs"></i><span class="menu-text">Settings</span>
-        </li>
-        <li>
-          <i class="fas fa-sign-out-alt"></i><span class="menu-text"  onclick="window.location.href='logout.php'">Logout</span>
+          <i class="fas fa-sign-out-alt"></i><span class="menu-text"
+            onclick="window.location.href='logout.php'">Logout</span>
         </li>
       </ul>
     </div>
@@ -105,16 +105,19 @@ $con->close();
     <div class="main-content">
       <!-- Top Header -->
       <header class="main-header">
-        <div class="header-left"><h1>Dashboard</h1></div>
+        <div class="header-left">
+          <h1>Dashboard</h1>
+        </div>
         <div class="header-right">
-        <div class="notification-icon">
+          <div class="notification-icon">
             <i class="fas fa-bell"></i>
             <span class="notification-badge"></span>
-         </div>
+          </div>
           <div class="user-details">
             <div class="user-info">
               <p class="name"><?= htmlspecialchars($patient['first_name']) ?>
-              <?= htmlspecialchars($patient['last_name']) ?></p>
+                <?= htmlspecialchars($patient['last_name']) ?>
+              </p>
               <p class="role">Patient</p>
             </div>
           </div>
@@ -136,7 +139,7 @@ $con->close();
             <div class="text-data">
               <span class="name"><?= htmlspecialchars($patient['first_name']) ?>
                 <?= htmlspecialchars($patient['last_name']) ?></span>
-                
+
               <span class="job"><strong>Patient_id:</strong> <?= htmlspecialchars($patient['nic']) ?></span>
             </div>
             <br>
@@ -153,8 +156,10 @@ $con->close();
               </div>
             </div>
             <div class="buttons">
-              <button class="button" onclick="window.location.href='chat.php?nic=<?= urlencode($nic) ?>'">Message</button>
-              <button class="button" onclick="window.location.href='edit_profile.php?nic=<?= urlencode($nic) ?>'">Edit Profile</button>
+              <button class="button"
+                onclick="window.location.href='chat.php?nic=<?= urlencode($nic) ?>'">Message</button>
+              <button class="button" onclick="window.location.href='edit_profile.php?nic=<?= urlencode($nic) ?>'">Edit
+                Profile</button>
 
             </div>
 
@@ -168,7 +173,8 @@ $con->close();
                   <i class="fas fa-user icon"></i>
                 </div>
 
-                <div class="label" onclick="window.location.href='medicalreports.php?nic=<?= urlencode($nic) ?>'">View Medical Reports</div>
+                <div class="label" onclick="window.location.href='medicalreports.php?nic=<?= urlencode($nic) ?>'">View
+                  Medical Reports</div>
 
               </div>
 
@@ -177,7 +183,8 @@ $con->close();
                   <i class="fas fa-user icon"></i>
                 </div>
 
-                <div class="label" onclick="window.location.href='labreports.php?nic=<?= urlencode($nic) ?>'">View Lab Reports</div>
+                <div class="label" onclick="window.location.href='labreports.php?nic=<?= urlencode($nic) ?>'">View Lab
+                  Reports</div>
 
               </div>
 
@@ -185,30 +192,31 @@ $con->close();
                 <div class="circle-background">
                   <i class="fas fa-flask icon"></i>
                 </div>
-                <div class="label" onclick="window.location.href='doc_appointment.php?nic=<?= urlencode($nic) ?>'">Book an Appointment</div>
+                <div class="label" onclick="window.location.href='doc_appointment.php?nic=<?= urlencode($nic) ?>'">Book
+                  an Appointment</div>
 
               </div>
             </div>
 
 
             <div class="calendar-wrapper">
-            <div class="calendar-container">
-    <h3>BMI Calculator</h3>
-    <form id="bmiForm" class="bmi-form">
-      <label for="height">Height (cm):</label>
-      <input type="number" id="height" placeholder="Enter height in cm" required />
+              <div class="calendar-container">
+                <h3>BMI Calculator</h3>
+                <form id="bmiForm" class="bmi-form">
+                  <label for="height">Height (cm):</label>
+                  <input type="number" id="height" placeholder="Enter height in cm" required />
 
-      <label for="weight">Weight (kg):</label>
-      <input type="number" id="weight" placeholder="Enter weight in kg" required />
+                  <label for="weight">Weight (kg):</label>
+                  <input type="number" id="weight" placeholder="Enter weight in kg" required />
 
-      <button type="submit" class="submit-btn">Calculate BMI</button>
-      <button type="button" id="refreshBtn" class="refresh-btn">Refresh</button>
-    </form>
-    <div id="bmiResult" class="bmi-result hidden">
-      <p><strong>BMI:</strong> <span id="bmiValue"></span></p>
-      <p id="bmiCategory"></p>
-    </div>
-  </div>
+                  <button type="submit" class="submit-btn">Calculate BMI</button>
+                  <button type="button" id="refreshBtn" class="refresh-btn">Refresh</button>
+                </form>
+                <div id="bmiResult" class="bmi-result hidden">
+                  <p><strong>BMI:</strong> <span id="bmiValue"></span></p>
+                  <p id="bmiCategory"></p>
+                </div>
+              </div>
 
               <div class="additional-container">
                 <h3>Upcoming Appointments</h3>
@@ -301,51 +309,51 @@ $con->close();
 
       </script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-  const bmiForm = document.getElementById("bmiForm");
-  const bmiResult = document.getElementById("bmiResult");
-  const bmiValue = document.getElementById("bmiValue");
-  const bmiCategory = document.getElementById("bmiCategory");
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const bmiForm = document.getElementById("bmiForm");
+          const bmiResult = document.getElementById("bmiResult");
+          const bmiValue = document.getElementById("bmiValue");
+          const bmiCategory = document.getElementById("bmiCategory");
 
-  bmiForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+          bmiForm.addEventListener("submit", (e) => {
+            e.preventDefault();
 
-    const height = parseFloat(document.getElementById("height").value);
-    const weight = parseFloat(document.getElementById("weight").value);
+            const height = parseFloat(document.getElementById("height").value);
+            const weight = parseFloat(document.getElementById("weight").value);
 
-    if (height > 0 && weight > 0) {
-      const bmi = (weight / ((height / 100) ** 2)).toFixed(2);
-      bmiValue.textContent = bmi;
+            if (height > 0 && weight > 0) {
+              const bmi = (weight / ((height / 100) ** 2)).toFixed(2);
+              bmiValue.textContent = bmi;
 
-      // Determine BMI category
-      let category = "";
-      if (bmi < 18.5) {
-        category = "Underweight";
-      } else if (bmi >= 18.5 && bmi < 24.9) {
-        category = "Normal weight";
-      } else if (bmi >= 25 && bmi < 29.9) {
-        category = "Overweight";
-      } else {
-        category = "Obese";
-      }
+              // Determine BMI category
+              let category = "";
+              if (bmi < 18.5) {
+                category = "Underweight";
+              } else if (bmi >= 18.5 && bmi < 24.9) {
+                category = "Normal weight";
+              } else if (bmi >= 25 && bmi < 29.9) {
+                category = "Overweight";
+              } else {
+                category = "Obese";
+              }
 
-      bmiCategory.textContent = `Category: ${category}`;
-      bmiResult.classList.remove("hidden");
-    } else {
-      alert("Please enter valid height and weight values.");
-    }
-  });
+              bmiCategory.textContent = `Category: ${category}`;
+              bmiResult.classList.remove("hidden");
+            } else {
+              alert("Please enter valid height and weight values.");
+            }
+          });
 
-  refreshBtn.addEventListener("click", () => {
-    document.getElementById("height").value = "";
-    document.getElementById("weight").value = "";
-    bmiResult.classList.add("hidden"); // Hide the results
-  });
+          refreshBtn.addEventListener("click", () => {
+            document.getElementById("height").value = "";
+            document.getElementById("weight").value = "";
+            bmiResult.classList.add("hidden"); // Hide the results
+          });
 
-});
+        });
 
-</script>
+      </script>
 
 </body>
 

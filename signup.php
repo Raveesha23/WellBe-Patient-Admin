@@ -29,10 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['medical_history'])) {
     // Prepare the SQL query
     $stmt = $con->prepare("
         INSERT INTO patient (
-            first_name, last_name, nic,password, dob, gender, address, email, contact, 
+            id, first_name, last_name, nic,password, dob, gender, address, email, contact, 
             medical_history, allergies, emergency_contact_name, emergency_contact_no, 
             emergency_contact_relationship
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?)
     ");
 
     // Check if the statement was prepared successfully
@@ -42,7 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['medical_history'])) {
     
     // Bind parameters to the statement
     $stmt->bind_param(
-        'ssssssssssssss',
+        'sssssssssssssss',
+        $patient_data['nic'],
         $patient_data['first_name'],
         $patient_data['last_name'],
         $patient_data['nic'],
@@ -65,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['medical_history'])) {
         unset($_SESSION['form1_data']);
 
         // Redirect to login page to prevent resubmission
-        header("Location: ./login");
+        header("Location: login.php");
         exit();
     } else {
         // Handle query execution errors

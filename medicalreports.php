@@ -1,13 +1,35 @@
 <?php
-// Start the session
 session_start();
 
+require 'dbconnection.php';
+
 if (!isset($_GET['nic']) || empty($_GET['nic'])) {
-    die("Access denied: NIC is missing in the URL");
+  die("Invalid access");
 }
 
-$nic = htmlspecialchars($_GET['nic']); // Retrieve and sanitize NIC
+$nic = htmlspecialchars($_GET['nic']);
 
+if (!isset($_GET['nic']) || empty($_GET['nic'])) {
+  die("Invalid NIC provided");
+}
+
+$nic = htmlspecialchars($_GET['nic']); // Sanitize input
+
+// Prepare and execute the query
+$stmt = $con->prepare("SELECT * FROM patient WHERE nic = ?");
+$stmt->bind_param("s", $nic); // Bind NIC as a string
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+  $patient = $result->fetch_assoc(); // Fetch patient data
+} else {
+  die("No patient found with NIC: " . htmlspecialchars($nic));
+}
+
+// Close resources
+$stmt->close();
+$con->close();
 
 ?>
 
@@ -71,11 +93,9 @@ $nic = htmlspecialchars($_GET['nic']); // Retrieve and sanitize NIC
             <span class="menu-text">Chat with Doctor</span>
           </a>
         </li>
+
         <li>
-          <i class="fas fa-cogs"></i><span class="menu-text">Settings</span>
-        </li>
-        <li>
-          <i class="fas fa-sign-out-alt"></i><span class="menu-text">Logout</span>
+          <i class="fas fa-sign-out-alt"></i><span class="menu-text" onclick="window.location.href='logout.php'">Logout</span>
         </li>
       </ul>
     </div>
@@ -84,18 +104,17 @@ $nic = htmlspecialchars($_GET['nic']); // Retrieve and sanitize NIC
     <div class="main-content">
       <!-- Top Header -->
       <header class="main-header">
-        <div class="header-left"></div>
+        <div class="header-left"><h1>Medical Reports</h1></div>
         <div class="header-right">
-          <div class="notification">
-            <img src="..\assests\notification.png">
-          </div>
+        <div class="notification-icon">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge"></span>
+         </div>
           <div class="user-details">
-            <div class="user-avatar">
-              <!-- User Avatar Icon -->
-            </div>
             <div class="user-info">
-              <p class="name">K.S.Perera</p>
-              <p class="role">Administrative Staff</p>
+              <p class="name"><?= htmlspecialchars($patient['first_name']) ?>
+              <?= htmlspecialchars($patient['last_name']) ?></p>
+              <p class="role">Patient</p>
             </div>
           </div>
         </div>
@@ -103,14 +122,11 @@ $nic = htmlspecialchars($_GET['nic']); // Retrieve and sanitize NIC
       
             <!-- Dashboard Content -->
             <div class="dashboard-content">
-                <div class="welcome-message">
-                    <p>Welcome Mr. K.S.Perera</p>
-                </div >
                 <div class="container">
                    
                     <div class="search-date">
                         <input type="text" placeholder="Search by Date">
-                        <p>10 August, 2024</p> 
+                       
                     </div>
                     <div class="table-container">
                         <table>
@@ -124,8 +140,8 @@ $nic = htmlspecialchars($_GET['nic']); // Retrieve and sanitize NIC
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td onclick="window.location.href='Medication_Details'">Medi_Rec_001 </td>
+                                <tr onclick="window.location.href='medical_rec.php?nic=<?= urlencode($nic) ?>'">
+                                    <td >Medi_Rec_001 </td>
                                     <td>12/08/2024</td>
                                     <td>7:00 - 10:00</td>
                                     <td>Dr. K. G. Gunawardana</td>
